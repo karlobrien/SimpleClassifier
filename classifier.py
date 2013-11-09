@@ -20,6 +20,7 @@ class Features(object):
         self.totalAge = 0
         self.count = 0
         self.averageAge = 0
+        self.test = 0
 
     def assign(self, line):
         self.age[line[0]] += 1
