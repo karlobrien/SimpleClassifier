@@ -3,7 +3,6 @@ import contextlib
 import sys
 from collections import defaultdict
 
-
 class Features(object):
 
     def __init__(self, name):
@@ -53,42 +52,42 @@ class Features(object):
     def incrementCount(self):
         self.count = self.count + 1
 
-    def getAverageAge(self):
-        return self.totalAge / self.count
-
-    def getAverageEducationClass(self):
-        return self.totalEducation / self.count
-
-    def getAverageCapitalGain(self):
-        return self.capitalGain / self.count
-
-    def getAverageCapitalLoss(self):
-        return self.capitalLoss / self.count
-
-    def getAverageHoursPerWeek(self):
-        return self.hoursPerWeek / self.count
+    def calculateNumericAverages(self):
+        self.averageAge = self.totalAge / self.count
+        self.averageEducation = self.totalEducation / self.count
+        self.averageCapitalGain = self.capitalGain / self.count
+        self.averageCapitalLoss = self.capitalLoss / self.count
+        self.averageHoursPerWeek = self.hoursPerWeek / self.count
 
     def calculateDiscreteAverages(self):
-        self.averageOccupation = 0
-        self.averageRelationship = 0
-        self.averageRace = 0
-        self.averageSex = 0
-
         self.averageWorkClass = {}
         for k,v in self.workClass.iteritems():
             self.averageWorkClass[k] = v / self.count
-            print self.averageWorkClass[k]
 
         self.averageMaritalStatus = {}
         for k,v in self.maritialStatus.iteritems():
             self.averageMaritalStatus[k] = v / self.count
-            print self.averageMaritalStatus[k]
+
+        self.averageOccupation = {}
+        for k,v in self.occupation.iteritems():
+            self.averageOccupation[k] = v / self.count
+
+        self.averageRelationship = {}
+        for k,v in self.relationship.iteritems():
+            self.averageRelationship[k] = v / self.count
+
+        self.averageRace = {}
+        for k,v in self.race.iteritems():
+            self.averageRace[k] = v / self.count
+
+        self.averageSex = {}
+        for k,v in self.sex.iteritems():
+            self.averageSex[k] = v / self.count
 
     def takeFeatures(self, line):
         self.incrementCount()
         self.assignDiscreteTotals(line)
         self.assignNumericTotals(line)
-
 
 def main():
     below50k = Features("below50k")
@@ -104,19 +103,11 @@ def main():
                 above50k.takeFeatures(feature)
 
     print below50k.title
-    print "Average Age: " ,below50k.getAverageAge()
-    print "Average Work Class: " ,below50k.getAverageEducationClass()
-    print below50k.workClass.items()
-    print "Below50k Count:" ,below50k.count
-    print below50k.maritialStatus.items()
 
-    print above50k.title
-    print "Average Age: " ,above50k.getAverageAge()
-    print "Average Work Class: " ,above50k.getAverageEducationClass()
-    print above50k.workClass.items()
-    print "Above50k Count:" ,above50k.count
-
+    below50k.calculateNumericAverages()
     below50k.calculateDiscreteAverages()
+
+    print below50k.averageRace
 
 if __name__ == '__main__':
     main()
