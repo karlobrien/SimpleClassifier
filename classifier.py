@@ -4,6 +4,7 @@ from collections import defaultdict
 import contextlib
 import sys
 import features
+import compare
 
 def main():
     below50k = features.Features("below50k")
@@ -29,6 +30,10 @@ def main():
     above50k.calculateDiscreteAverages()
 
     print above50k.averageRace
+    comparer = compare.CompareFeatures(below50k, above50k)
+    comparer.Print()
+
+
 
 if __name__ == '__main__':
     main()
