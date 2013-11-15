@@ -8,3 +8,6 @@ class CompareFeatures(object):
 
     def Print(self):
         print self.below50k.title
+
+    def Compare(self):
+        print "compare"
