@@ -1,6 +1,4 @@
 from __future__ import division
-import contextlib
-import sys
 from collections import defaultdict
 
 class Features(object):

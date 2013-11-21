@@ -1,8 +1,5 @@
 from __future__ import division
-from collections import defaultdict
 
-import contextlib
-import sys
 import features
 import compare
 
