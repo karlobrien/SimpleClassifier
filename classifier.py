@@ -16,17 +16,11 @@ def main():
             if (outcome == ' >50K'):
                 above50k.takeFeatures(feature)
 
-    print below50k.title
-
     below50k.calculateNumericAverages()
     below50k.calculateDiscreteAverages()
-
-    print below50k.averageRace
-
     above50k.calculateNumericAverages()
     above50k.calculateDiscreteAverages()
 
-    print above50k.averageRace
     comparer = compare.CompareFeatures(below50k, above50k)
     comparer.Print()
     comparer.Compare()

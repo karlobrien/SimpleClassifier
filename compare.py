@@ -1,3 +1,5 @@
+from __future__ import division
+from collections import defaultdict
 import itertools
 
 class CompareFeatures(object):
@@ -19,9 +21,14 @@ class CompareFeatures(object):
         for f,b in itertools.izip_longest(self.below50k.averageWorkClass,self.above50k.averageWorkClass):
             self.averageWorkClass[f] = (self.below50k.averageWorkClass[f] + self.above50k.averageWorkClass[b]) / 2
 
-        self.averageMaritialStatus = {}
-        for f,b in itertools.izip_longest(self.below50k.averageMaritialStatus,self.above50k.averageMaritialStatus):
-            self.averageMaritialStatus[f] = (self.below50k.averageMaritialStatus[f] + self.above50k.averageMaritialStatus[b]) / 2
+        self.averageMaritialStatus = defaultdict(int)
+
+        for e in self.below50k.averageMaritalStatus:
+            self.averageMaritialStatus[e] += self.below50k.averageMaritalStatus[e]
+
+        for e in self.above50k.averageMaritalStatus:
+            self.averageMaritialStatus[e] += self.above50k.averageMaritalStatus[e]
+
 
     def calAverage(self, value1, value2):
         return (value1 + value2) / 2

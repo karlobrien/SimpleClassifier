@@ -23,8 +23,8 @@ class Features(object):
         self.hoursPerWeek = 0
         self.averageHoursPerWeek = 0
 
-        self.averageWorkClass = 0
-        self.averageMaritialStatus = 0
+        #self.averageWorkClass = 0
+        #self.averageMaritialStatus = 0
         self.averageOccupation = 0
         self.averageRelationship = 0
         self.averageRace = 0
