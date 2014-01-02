@@ -9,6 +9,11 @@ class CompareFeatures(object):
 
     def Print(self):
         print self.below50k.title
+        print self.average
+        print self.averageEducation
+        print self.averageCapitalGain
+        print self.averageCapitalLoss
+        print self.averageHoursPerWeek
 
     def Compare(self):
         self.average = (self.below50k.averageAge + self.above50k.averageAge)  / 2

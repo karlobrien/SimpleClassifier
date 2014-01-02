@@ -22,11 +22,8 @@ def main():
     above50k.calculateDiscreteAverages()
 
     comparer = compare.CompareFeatures(below50k, above50k)
-    comparer.Print()
     comparer.Compare()
-
-    print comparer.average
-    print comparer.averageEducation
+    comparer.Print()
 
 if __name__ == '__main__':
     main()
